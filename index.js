@@ -15,14 +15,14 @@ let city = currentPlace[1]; //3. get Name of the rnd City
 
 var citybox = [
 	[
-		{ city: "Berlin" },
+		{ city: "berlin" },
 		52.43012294433922,
 		52.59177094827171,
 		13.252386952839123,
 		13.561571886041888,
 	],
 	[
-		{ city: "Berlin" },
+		{ city: "berlin" },
 		52.43012294433922,
 		52.59177094827171,
 		13.252386952839123,
@@ -41,10 +41,10 @@ let cordinates = { lat: lat, lng: lng };
 let city = currentCity[0];
 
 function initialize() {
-	getNewLocation();
+	getFirstLocation();
 }
 
-function getNewLocation() {
+function getFirstLocation() {
 	panorama = new google.maps.StreetViewPanorama(
 		document.getElementById("street-view"),
 		{
@@ -54,16 +54,52 @@ function getNewLocation() {
 		}
 	);
 }
-console.log(city);
+function getNewLocation() {
+
+	let currentCity = citybox[Math.floor(Math.random() * citybox.length)];
+	let latMin = currentCity[1];
+	let latMax = currentCity[2];
+	let lngMin = currentCity[3];
+	let lngMax = currentCity[4];
+	let lat = Math.random() * (latMax - latMin) + latMin;
+	let lng = Math.random() * (lngMax - lngMin) + lngMin;
+	let cordinates = { lat: lat, lng: lng };
+	let city = currentCity[0];
+
+	panorama = new google.maps.StreetViewPanorama(
+		document.getElementById("street-view"),
+		{
+			position: cordinates,
+			pov: { heading: 165, pitch: 0 },
+			zoom: 1,
+		}
+	);
+}
 function validate(e) {
 	if (e.code === "Enter") {
 		//checks whether the pressed key is "Enter"
 		var text = e.target.value;
-		if (text.toLowerCase() == city) {
-			console.log(city);
-		} else console.log("wrong");
+
+		if (text.toLowerCase() == city.city) 
+		{
+			score++;
+			alert("Correct! Current Scrore "+ score);
+			getNewLocation()
+
+		} 
+		
+		else guessIsWrong();
 	}
 	//validation of the input...
 }
 
-//test
+function guessIsRight(){
+	score++;
+	alert("Correct! Current Scrore "+ score)
+}
+
+function guessIsWrong(){
+	score = 0;
+	alert("Wrong! Your score is set to 0");
+	getNewLocation()
+}	
