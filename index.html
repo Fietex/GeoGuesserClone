@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Street View Containers</title>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<!-- =================
+	NAVIGATION
+==================-->
+
+		<nav>
+			<div class="nav-center">
+				<h4>GeoGuessrClone</h4>
+				<ul class="nav-links">
+					<li><a href="index.html">new location</a></li>
+					<li><a href="hex.html">how to play</a></li>
+				</ul>
+				<a class="btn">Guess</a>
+			</div>
+		</nav>
+		<!--======== Input =========-->
+		<div class="input">
+			<div class="form__group field">
+				<input
+					type="text"
+					class="form__field"
+					placeholder="Your Guess"
+					name="guessinput"
+					id="guessinput"
+					required
+					onkeydown="validate(event)"
+				/>
+				<label for="guessinput" class="form__label">Your Guess</label>
+			</div>
+		</div>
+		<!--=============== Streetview ==============-->
+		<div id="street-view"></div>
+
+		<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ6sVlXRmMu4-834cDqNrWTRvBtF8y-go&callback=initialize&libraries=&v=weekly"
+			async
+		></script>
+	</body>
+</html>
