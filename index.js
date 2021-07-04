@@ -43,18 +43,31 @@ function getNewLocation() {
 	let lat = Math.random() * (latMax - latMin) + latMin;
 	let lng = Math.random() * (lngMax - lngMin) + lngMin;
 	let cordinates = { lat: lat, lng: lng };
-
-	panorama = new google.maps.StreetViewPanorama(
-		document.getElementById("street-view"),
-		{
-			position: cordinates,
-			pov: { heading: 165, pitch: 0 },
-			zoom: 1,
+	
+	var streetViewService = new google.maps.StreetViewService();
+	var STREETVIEW_MAX_DISTANCE = 50;
+	var latLng = new google.maps.LatLng(lat, lng);
+	streetViewService.getPanoramaByLocation(latLng, STREETVIEW_MAX_DISTANCE, function (streetViewPanoramaData, status) {
+		if (status === google.maps.StreetViewStatus.OK) {
+			panorama = new google.maps.StreetViewPanorama(
+				document.getElementById("street-view"),
+				{
+					position: cordinates,
+					pov: { heading: 165, pitch: 0 },
+					zoom: 1,
+				}
+			);
+		} else {
 		}
-	);
+	});
+
+	
 }
 
+
+
 https://maps.googleapis.com/maps/api/streetview/metadata?key=AIzaSyDQ6sVlXRmMu4-834cDqNrWTRvBtF8y&location=(lat,lng)
+
 
 
 
