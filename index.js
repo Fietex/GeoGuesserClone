@@ -1,5 +1,13 @@
 let score = 0;
 let panorama;
+let currentCity;
+let latMin;
+let latMax;
+let lngMin;
+let lngMax;
+let lat;
+let lng;
+let cordinates;
 
 /*
 var places = [
@@ -22,11 +30,11 @@ var citybox = [
 		13.561571886041888,
 	],
 	[
-		{ city: "berlin" },
-		52.43012294433922,
-		52.59177094827171,
-		13.252386952839123,
-		13.561571886041888,
+		{ city: "hamburg" },
+		53.527744673655484,
+		53.60551505626493,
+		9.90090844394884,
+		10.060337067735812,
 	],
 ];
 
@@ -35,41 +43,40 @@ function initialize() {
 }
 
 function getNewLocation() {
-	let currentCity = citybox[Math.floor(Math.random() * citybox.length)];
-	let latMin = currentCity[1];
-	let latMax = currentCity[2];
-	let lngMin = currentCity[3];
-	let lngMax = currentCity[4];
-	let lat = Math.random() * (latMax - latMin) + latMin;
-	let lng = Math.random() * (lngMax - lngMin) + lngMin;
-	let cordinates = { lat: lat, lng: lng };
-	
+	document.getElementById("falseortrueresponse").style.display = "none";
+	currentCity = citybox[Math.floor(Math.random() * citybox.length)];
+	latMin = currentCity[1];
+	latMax = currentCity[2];
+	lngMin = currentCity[3];
+	lngMax = currentCity[4];
+	lat = Math.random() * (latMax - latMin) + latMin;
+	lng = Math.random() * (lngMax - lngMin) + lngMin;
+	cordinates = { lat: lat, lng: lng };
+
 	var streetViewService = new google.maps.StreetViewService();
 	var STREETVIEW_MAX_DISTANCE = 50;
 	var latLng = new google.maps.LatLng(lat, lng);
-	streetViewService.getPanoramaByLocation(latLng, STREETVIEW_MAX_DISTANCE, function (streetViewPanoramaData, status) {
-		if (status === google.maps.StreetViewStatus.OK) {
-			panorama = new google.maps.StreetViewPanorama(
-				document.getElementById("street-view"),
-				{
-					position: cordinates,
-					pov: { heading: 165, pitch: 0 },
-					zoom: 1,
-				}
-			);
-		} else {
+	streetViewService.getPanoramaByLocation(
+		latLng,
+		STREETVIEW_MAX_DISTANCE,
+		function (streetViewPanoramaData, status) {
+			if (status === google.maps.StreetViewStatus.OK) {
+				panoramaOk = true;
+				panorama = new google.maps.StreetViewPanorama(
+					document.getElementById("street-view"),
+					{
+						position: cordinates,
+						pov: { heading: 165, pitch: 0 },
+						zoom: 1,
+					}
+				);
+			} else {
+				console.log("again");
+				getNewLocation();
+			}
 		}
-	});
-
-	
+	);
 }
-
-
-
-https://maps.googleapis.com/maps/api/streetview/metadata?key=AIzaSyDQ6sVlXRmMu4-834cDqNrWTRvBtF8y&location=(lat,lng)
-
-
-
 
 function validate(e) {
 	if (e.code === "Enter") {
@@ -78,22 +85,34 @@ function validate(e) {
 
 		if (text.toLowerCase() == currentCity[0].city) {
 			score++;
-			alert("Correct! Current Scrore " + score);
-			getNewLocation();
-		} else guessIsWrong();
+			document.getElementById("score").innerHTML = "score: " + score;
+			trueResponse();
+			toggleFalseOrTrueResponseOn();
+		} else {
+			score = 0;
+			falseResponse();
+			toggleFalseOrTrueResponseOn();
+		}
 	}
 	//validation of the input...
 }
 
-function guessIsRight() {
-	score++;
-	alert("Correct! Current Scrore " + score);
+function toggleFalseOrTrueResponseOn() {
+	document.getElementById("falseortrueresponse").style.display = "flex";
+}
+function toggleFalseOrTrueResponseOff() {
+	document.getElementById("falseortrueresponse").style.display = "none";
+	getNewLocation();
 }
 
-function guessIsWrong() {
-	score = 0;
-	alert("Wrong! Your score is set to 0");
-	getNewLocation();
+function falseResponse() {
+	document.getElementById("h3").innerHTML = "Wrong!!!";
+	document.getElementById("p").innerHTML = "Your score is set to 0.";
+}
+
+function trueResponse() {
+	document.getElementById("h3").innerHTML = "Correct!!!";
+	document.getElementById("p").innerHTML = "Current Scrore " + score + ".";
 }
 
 /*

@@ -25,7 +25,7 @@ Variables
 
 :root {
 	/* dark shades of primary color*/
-	--clr-primary-1: hsl(205, 86%, 17%);
+	--clr-primary-1: #11998e;
 	--clr-primary-2: hsl(205, 77%, 27%);
 	--clr-primary-3: hsl(205, 72%, 37%);
 	--clr-primary-4: hsl(205, 63%, 48%);
@@ -314,6 +314,7 @@ How To Play
 	background: rgba(0, 0, 0, 0.7);
 	display: none;
 	flex-direction: column;
+	align-items: center;
 }
 
 .howtoplay h3 {
@@ -328,6 +329,93 @@ How To Play
 }
 
 .howtoplay .btn {
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(255, 255, 255, 0.4);
 	color: rgba(255, 255, 255, 0.8);
+	border: white;
+	box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+	-moz-box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+}
+
+.howtoplay .btn:hover {
+	box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+	-moz-box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+}
+
+/* 
+====================
+Score
+=====================
+*/
+
+.score {
+	position: absolute;
+	z-index: 9;
+	width: 15vw;
+	margin: 6.5rem 80vw 0;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.score h3 {
+	margin: 0;
+	color: white;
+	transition: 0.3s;
+}
+
+.score h3:hover {
+	margin: 0;
+	color: var(--clr-primary-1);
+	transition: 0.3s;
+	cursor: default;
+}
+
+/* 
+====================
+Response
+=====================
+*/
+
+.falseortrueresponse {
+	position: absolute;
+	z-index: 12;
+	width: 60vw;
+	margin: 20vh 20vw 0;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.7);
+	display: none;
+	flex-direction: column;
+	align-items: center;
+}
+.falseortrueresponse h3 {
+	margin: 0;
+	color: white;
+	transition: 0.3s;
+	padding-bottom: 1rem;
+}
+
+.falseortrueresponse p {
+	color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+}
+
+.falseortrueresponse .btn {
+	background: rgba(255, 255, 255, 0.4);
+	color: rgba(255, 255, 255, 0.8);
+	border: white;
+	box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+	-moz-box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+}
+
+.falseortrueresponse .btn:hover {
+	box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+	-moz-box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
 }
