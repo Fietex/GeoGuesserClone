@@ -165,8 +165,7 @@ nav {
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
-	justify-content:space-between;
-	
+	justify-content: space-between;
 }
 .nav-center h4 {
 	margin-bottom: 0;
@@ -177,16 +176,15 @@ nav {
 }
 .nav-links {
 	display: flex;
-	
 }
 
-nav ul{
+nav ul {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-right: 10w;
 }
-nav ul li{
+nav ul li {
 	margin: 0 1rem;
 }
 
@@ -210,6 +208,7 @@ nav a:hover {
 	padding: 0.2rem 1rem;
 	border-radius: 10px;
 	transition: 0.3s;
+	cursor: pointer;
 }
 
 .btn:hover {
@@ -218,7 +217,6 @@ nav a:hover {
 	box-shadow: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
-	
 }
 
 /* 
@@ -234,12 +232,10 @@ Input
 	margin: 80vh 40vw 0;
 	padding: 20px;
 	border-radius: 20px;
-    background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.6);
 }
 
-HELP
-
-.form__group {
+HELP .form__group {
 	position: relative;
 	padding: 15px 0 0;
 	margin-top: 10px;
@@ -255,7 +251,7 @@ HELP
 	font-size: 1.3rem;
 	color: white;
 	padding: 7px 0;
-	background: rgba(0, 0, 0, 0.0);
+	background: rgba(0, 0, 0, 0);
 	transition: border-color 0.2s;
 }
 
@@ -278,7 +274,6 @@ HELP
 }
 
 .form__field:focus {
-
 	padding-bottom: 6px;
 	font-weight: 700;
 	border-width: 3px;
@@ -287,13 +282,13 @@ HELP
 }
 
 .form__field:focus ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: #11998e;
-    font-weight: 700;
+	position: absolute;
+	top: 0;
+	display: block;
+	transition: 0.2s;
+	font-size: 1rem;
+	color: #11998e;
+	font-weight: 700;
 }
 /* reset input */
 .form__field {
@@ -312,9 +307,27 @@ How To Play
 .howtoplay {
 	position: absolute;
 	z-index: 10;
-	width: 6	0vw;
+	width: 60vw;
 	margin: 20vh 20vw 0;
 	padding: 20px;
 	border-radius: 20px;
-    background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.7);
+	display: none;
+	flex-direction: column;
+}
+
+.howtoplay h3 {
+	color: white;
+	align-self: center;
+	padding-bottom: 1rem;
+}
+
+.howtoplay p {
+	color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+}
+
+.howtoplay .btn {
+	background: rgba(0, 0, 0, 0.4);
+	color: rgba(255, 255, 255, 0.8);
 }

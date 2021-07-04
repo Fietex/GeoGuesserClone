@@ -30,32 +30,11 @@ var citybox = [
 	],
 ];
 
-let currentCity = citybox[Math.floor(Math.random() * citybox.length)];
-let latMin = currentCity[1];
-let latMax = currentCity[2];
-let lngMin = currentCity[3];
-let lngMax = currentCity[4];
-let lat = Math.random() * (latMax - latMin) + latMin;
-let lng = Math.random() * (lngMax - lngMin) + lngMin;
-let cordinates = { lat: lat, lng: lng };
-let city = currentCity[0];
-
 function initialize() {
-	getFirstLocation();
+	getNewLocation();
 }
 
-function getFirstLocation() {
-	panorama = new google.maps.StreetViewPanorama(
-		document.getElementById("street-view"),
-		{
-			position: cordinates,
-			pov: { heading: 165, pitch: 0 },
-			zoom: 1,
-		}
-	);
-}
 function getNewLocation() {
-
 	let currentCity = citybox[Math.floor(Math.random() * citybox.length)];
 	let latMin = currentCity[1];
 	let latMax = currentCity[2];
@@ -64,7 +43,6 @@ function getNewLocation() {
 	let lat = Math.random() * (latMax - latMin) + latMin;
 	let lng = Math.random() * (lngMax - lngMin) + lngMin;
 	let cordinates = { lat: lat, lng: lng };
-	let city = currentCity[0];
 
 	panorama = new google.maps.StreetViewPanorama(
 		document.getElementById("street-view"),
@@ -75,31 +53,47 @@ function getNewLocation() {
 		}
 	);
 }
+
+https://maps.googleapis.com/maps/api/streetview/metadata?key=AIzaSyDQ6sVlXRmMu4-834cDqNrWTRvBtF8y&location=(lat,lng)
+
+
+
 function validate(e) {
 	if (e.code === "Enter") {
 		//checks whether the pressed key is "Enter"
 		var text = e.target.value;
 
-		if (text.toLowerCase() == city.city) 
-		{
+		if (text.toLowerCase() == currentCity[0].city) {
 			score++;
-			alert("Correct! Current Scrore "+ score);
-			getNewLocation()
-
-		} 
-		
-		else guessIsWrong();
+			alert("Correct! Current Scrore " + score);
+			getNewLocation();
+		} else guessIsWrong();
 	}
 	//validation of the input...
 }
 
-function guessIsRight(){
+function guessIsRight() {
 	score++;
-	alert("Correct! Current Scrore "+ score)
+	alert("Correct! Current Scrore " + score);
 }
 
-function guessIsWrong(){
+function guessIsWrong() {
 	score = 0;
 	alert("Wrong! Your score is set to 0");
-	getNewLocation()
-}	
+	getNewLocation();
+}
+
+/*
+======================
+	How To Play
+======================
+*/
+
+function toggleHowToPlay() {
+	var x = document.getElementById("howtoplay");
+	if (x.style.display === "none") {
+		x.style.display = "flex";
+	} else {
+		x.style.display = "none";
+	}
+}
