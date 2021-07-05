@@ -149,7 +149,7 @@ NAV
 */
 
 nav {
-	background: var(--clr-white);
+	background: rgba(0, 0, 0, 0.7);
 	height: 5rem;
 	display: grid;
 	align-items: center;
@@ -161,7 +161,7 @@ nav {
 
 .nav-center {
 	width: 100%;
-	max-width: 90%;
+	max-width: 100%;
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
@@ -171,11 +171,13 @@ nav {
 	margin-bottom: 0;
 	color: var(--clr-white);
 	background: var(--clr-primary-1);
-	padding: 0.8rem 2rem;
-	border-radius: 10px;
+	padding: 1.5rem 10rem;
+	border-radius: 0px 10px 10px 0px;
+	font-size: 2rem;
 }
 .nav-links {
 	display: flex;
+	margin-right: 7%;
 }
 
 nav ul {
@@ -191,7 +193,7 @@ nav ul li {
 nav a {
 	text-transform: capitalize;
 	font-weight: 700;
-	font-size: rem;
+	font-size: 1.5rem;
 	color: var(--clr-primary-1);
 	letter-spacing: var(--spacing);
 }
@@ -200,11 +202,11 @@ nav a:hover {
 }
 
 .btn {
-	background: var(--clr-white);
-	color: var(--clr-primary-1);
-	box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 1);
-	-webkit-box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 1);
-	-moz-box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 1);
+	background: var(--clr-primary-1);
+	color: var(--clr-white);
+	box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
+	-moz-box-shadow: 0px 0px 0px 2px rgb(255, 255, 255);
 	padding: 0.2rem 1rem;
 	border-radius: 10px;
 	transition: 0.3s;
@@ -214,9 +216,9 @@ nav a:hover {
 .btn:hover {
 	background: var(--clr-primary-1);
 	color: var(--clr-white);
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
+	box-shadow: 0px 0px 0px 4px rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 0px 0px 4px rgb(255, 255, 255);
+	-moz-box-shadow: 0px 0px 0px 4px rgb(255, 255, 255);
 }
 
 /* 
