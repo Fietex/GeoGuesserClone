@@ -166,7 +166,6 @@ function validate(e) {
 			toggleFalseOrTrueResponseOff();
 		}
 	}
-	//validation of the input...
 }
 
 function toggleFalseOrTrueResponseOn() {

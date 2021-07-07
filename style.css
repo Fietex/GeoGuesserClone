@@ -223,7 +223,7 @@ nav a:hover {
 
 /* 
 ====================
-Input
+Input for Guess
 =====================
 */
 
@@ -232,16 +232,16 @@ Input
 	z-index: 10;
 	width: 20vw;
 	margin: 80vh 40vw 0;
-	padding: 20px;
+	padding: 0px 20px 20px;
 	border-radius: 20px;
 	background: rgba(0, 0, 0, 0.6);
 }
 
-HELP .form__group {
+.form__group {
 	position: relative;
 	padding: 15px 0 0;
-	margin-top: 10px;
-	width: 50%;
+	margin-top: px;
+	width: 100%;
 }
 
 .form__field {
@@ -291,13 +291,6 @@ HELP .form__group {
 	font-size: 1rem;
 	color: #11998e;
 	font-weight: 700;
-}
-/* reset input */
-.form__field {
-	&:required,
-	&:invalid {
-		box-shadow: none;
-	}
 }
 
 /* 
